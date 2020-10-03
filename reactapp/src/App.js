@@ -1,35 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+
 // import Post from './FacebookPost';
 
 
-class App extends React.Component{
-  state = {
-    number: 0,
-  }
+function App(){
+  // incrementNumber= () => {
+  //   this.setState({
+  //     number: this.state.number + 1
+  //   })
+  // }
 
-  incrementNumber= () => {
-    this.setState({
-      number: this.state.number + 1
-    })
-  }
+  // decrement = () => {
+  //   this.setState({
+  //     number: this.state.number - 1
+  //   })
+  // }
 
-  decrement = () => {
-    this.setState({
-      number: this.state.number - 1
-    })
+  const [count, setCount] = useState(5);
+  const incrementNumber = () => {
+    setCount(count + 1)
   }
-  render(){
+  const decrementNumber = () => {
+    setCount(count - 1)
+  }
     return (
       <div className='container'>
-        {/* <Post author='Federico' description='Good morning React'/>
-        <Post author='Marta' description='Hello Everybody'/>
-        <Post author='Lisa' description='React is nice'/> */}
-        <h4>Counter: {this.state.number}</h4>
-        <button onClick={this.incrementNumber}>Aumenta</button>
-        <button onClick={this.decrement}>Decrementa</button>
+        <h4>Counter: {count}</h4>
+        <button onClick={incrementNumber}>Aumenta</button>
+        <button onClick={decrementNumber}>Decrementa</button>
       </div>
     )
-  }
 
 };
 
