@@ -1,0 +1,21 @@
+.Post {
+  border: 1px solid black;
+  color: tomato;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 300px;
+}
+
+.Post>h4{
+  color: brown;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+}
