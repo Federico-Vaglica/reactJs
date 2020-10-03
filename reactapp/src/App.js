@@ -1,37 +1,29 @@
-import React, { useState } from 'react';
+import React, {useState,useRef} from 'react';
+import TodoList from './TodoList'
+import uuidv4 from 'uuid/dist/v4'
 
+function App() {
+  const [todo,setTodos] = useState ([])
+  const todoNameRef = useRef()
+  function handleAddTodo(){
+    const name = todoNameRef.current.value
+    if (name === '') return
+    setTodos(prevTodos => {
+      return [...prevTodos, {id:uuidv4(),name:name,complete: false}]
+    })
+    console.log(name)
+    todoNameRef.current.value = null
 
-import Post from './FacebookPost';
-
-
-function App(){
-
-  // const [count, setCount] = useState(5);
-  // const incrementNumber = () => {
-  //   setCount(count + 1)
-  // }
-  // const decrementNumber = () => {
-  //   setCount(count - 1)
-  // }
-  //   return (
-  //     <div className='container'>
-  //       <h4>Counter: {count}</h4>
-  //       <button onClick={incrementNumber}>Aumenta</button>
-  //       <button onClick={decrementNumber}>Decrementa</button>
-  //     </div>
-  //   )
-
-  const [posts, setPost] = useState([
-    {author: "Federico" , description: "React is powerFull"},
-    {author: "Marta" , description: "React is awesome"},
-    {author: "Lisa" , description: "Hello Everybody"}
-  ])
-
+  }
   return (
-    <div className="container">
-      {posts.map((post,index) =>(
-        <Post key = {index} author ={post.author} description = {post.description}/>
-      ))}
+    <div className="App">
+      <>
+        <TodoList todos={todo}/>
+        <input ref={todoNameRef} type="text"/>
+        <button onClick={handleAddTodo}>Add Todo</button>
+        <button>Cleat Completed todo</button>
+        <div>0 left todo</div>
+      </>
     </div>
   )
 }
