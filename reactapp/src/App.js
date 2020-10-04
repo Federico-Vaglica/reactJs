@@ -12,7 +12,7 @@ function App() {
       return [...prevTodos, {id:uuidv4(),name:name,complete: false}]
     })
     console.log(name)
-    todoNameRef.current.value = null
+    todoNameRef.current.value  = null
 
   }
   return (
